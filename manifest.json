@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "Bitsplit",
+  "description": "This extension shows a Google Image search result for the current page",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "accept_false.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+	"tabs",
+    "activeTab",
+    "https://ajax.googleapis.com/",
+    "https://severn.me/"
+  ]
+}
