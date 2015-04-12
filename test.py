@@ -1,36 +1,3 @@
-# Credit Card Banking INFO
-# Account number:
-# 792291319682
-# Routing number:
-# 325272063
-# Credit card
-
-# Credit card number:
-# 4032030690230678
-# Credit card type:
-# Visa
-# Expiration date:
-# 4/2020
-# PayPal
-
-# Balance:
-# 9999.00 USD
-
-# #PayPal Info
-# PayPal payment card
-
-# Payment card:
-# 6221194887829340
-# Exp date:
-# 06/2018
-# Track 1:
-# %B6221194887829340^^1805^1010?
-# Track 2:
-# ;6221194887829340=18051010?
-
-
-# Balance:
-# 23123.00 USD
 import paypalrestsdk
 from paypalrestsdk import Payment
 import logging
@@ -40,14 +7,6 @@ paypalrestsdk.configure({
   "mode": "sandbox", # sandbox or live
   "client_id": "Ac0V2MLPF7brDffSLgf8BnKVSRtuv0XnyfrQt1lIOuYbG9Zt1_AU0t3-u0v3QBNEFmfsHwn1QBfTejwH",
   "client_secret": "EPF_K2Gm8yfnylElN5XWsp6d-FufdHIzB5sGoS_X81tKp16s60-7Dl4wOXdcE0niKQe8MsSbirCKKczF" })
-
-amount = input('Enter the amount of your donation: ')
-print(amount)
-amount = "%.2f" % amount
-print(amount)
-amount = str(amount)
-print(amount)
-
 
 # Payment
 # A Payment Resource; create one using
@@ -75,9 +34,9 @@ payment = Payment({
         # ItemList
         "item_list": {
             "items": [{
-                "name": "Donation",
+                "name": "item",
                 "sku": "item",
-                "price": amount,
+                "price": "5.00",
                 "currency": "USD",
                 "quantity": 1}]},
 
