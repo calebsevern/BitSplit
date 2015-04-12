@@ -49,7 +49,13 @@ function getCurrentTabUrl(callback) {
 
 function showBitcoin() {
 	document.getElementById('accepting-none').style.display = 'none';
-	document.getElementById('show-bitcoin').style.display = 'block';
+	document.getElementById('bitcoin-option').style.display = 'block';
+}
+
+function showPayPal(email) {
+	$("#paypal-link").attr("href", 'https://www.paypal.com/cgi-bin/webscr?business=' + email + '&cmd=_xclick&currency_code=USD&item_name=Donation+via+BitSplit');
+	document.getElementById('accepting-none').style.display = 'none';
+	$("#show-paypal").show();
 }
 
 function renderStatus(statusText) {
@@ -86,17 +92,22 @@ function getBitStatus(page) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
     // Put the image URL in Google search.
    // renderStatus('This website accepts donations.');
 
 	//getBitStatus("severn.me");	
   });
-});
+});*/
 
 chrome.tabs.getSelected(null, function(tab) {
 	getBitStatus(new URL(tab.url).hostname);
+	showPayPal("calebsevern@gmail.com");
+	
+	$("#paypal-link").click(function() {
+		chrome.tabs.create({url: $(this).attr('href')});
+	});
 });
 
 

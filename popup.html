@@ -17,23 +17,45 @@
         white-space: pre;
         text-overflow: ellipsis;
         overflow: hidden;
-        width: 400px;
+        width: 170px;
       }
+	  
+	  #qrcode img {
+		width: 150px;
+	  }
+	  
+	  .options {
+		width: 100%;
+	  }
+	  
+	  .option {
+		width: calc(100% - 20px);
+		padding: 10px;
+		border-bottom: 1px solid rgba(0, 0, 0, .2);
+		text-align: center;
+	  }
     </style>
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
-	
   </head>
   <body>
   
     <div id="status"></div>
-		<a href="#" id="show-bitcoin" style="display: none;">Bitcoin</a>
-		<div id="qrcode" style="display: none;"></div>
+		<div class="options">
+			<div class="option" id="bitcoin-option" style="display: none;">
+				<a href="#" id="show-bitcoin">Bitcoin</a>
+				<br><br>
+				<div id="qrcode"></div>
+			</div>
+			<div class="option" id="show-paypal" style="display: none;">
+				<a id="paypal-link" href="#">PayPal</a>
+			</div>
+			<div class="option">
+				<a href="#" id="show-venmo">Venmo</a>
+			</div>
+		
+		</div>
+		
+		
 		
 		<text id="accepting-none">This website does not accept donations.</text>
     <img id="image-result" hidden>
