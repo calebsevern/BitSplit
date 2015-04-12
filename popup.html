@@ -6,11 +6,12 @@
  -->
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>BitSplit</title>
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
+		background-image: url('http://turbo.designwoop.com/uploads/2012/03/20_free_subtle_textures_floral_patterns.jpg');
       }
       #status {
         /* avoid an excessively wide status text */
@@ -31,8 +32,12 @@
 	  .option {
 		width: calc(100% - 20px);
 		padding: 10px;
-		border-bottom: 1px solid rgba(0, 0, 0, .2);
+		border-bottom: 1px dashed rgba(0, 0, 0, .2);
 		text-align: center;
+	  }
+	  
+	  a {
+		color: #446CB3;
 	  }
     </style>
 
@@ -42,17 +47,17 @@
     <div id="status"></div>
 		<div class="options">
 			<div class="option" id="bitcoin-option" style="display: none;">
-				<a href="#" id="show-bitcoin">Bitcoin</a>
+				<text id="show-bitcoin">Bitcoin</text>
 				<br><br>
+				<center>
 				<div id="qrcode"></div>
+				</center><br>
+				<text style="font-size: 12px;" id="btc-wallet"></text>
+				
 			</div>
 			<div class="option" id="show-paypal" style="display: none;">
 				<a id="paypal-link" href="#">PayPal</a>
-			</div>
-			<div class="option">
-				<a href="#" id="show-venmo">Venmo</a>
-			</div>
-		
+			</div>		
 		</div>
 		
 		
