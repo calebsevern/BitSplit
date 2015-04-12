@@ -9,6 +9,19 @@
     "default_icon": "accept_false.png",
     "default_popup": "popup.html"
   },
+  "background": {
+	"scripts": ["bg.js"]
+  },
+  "content_scripts": [
+        {
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+            ],
+        "js": ["bg.js"],
+        "run_at": "document_end"
+        }
+    ],
   "permissions": [
 	"tabs",
     "activeTab",
