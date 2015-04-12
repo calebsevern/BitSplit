@@ -1,6 +1,12 @@
 
-function getBitStatus(page) {
+/**
+*	Determines whether the current site accepts Bitcoin donations.
+*
+*	@params:
+*		page: hostname (example.com)
+**/
 
+function getBitStatus(page) {
 
   var x = new XMLHttpRequest();
   x.open('GET', "https://severn.me/projects/extension/lookup.php?page=" + page);
@@ -17,8 +23,7 @@ function getBitStatus(page) {
 	var new_icon_path = (accepts) ? "accept_true.png" : "accept_false.png";
 	chrome.browserAction.setIcon({path: new_icon_path});	
   };
-  x.onerror = function() {
-	renderStatus('Connection error :(');
+  x.onerror = function(e) {
   };
   x.send();
 }

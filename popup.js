@@ -8,12 +8,6 @@ function(request, sender, sendResponse) {
 });
 
 
-chrome.tabs.getSelected(null, function(tab) {
-    var url = new URL(tab.url).hostname;
-	getBitStatus(url);
-});
-
-
 function getCurrentTabUrl(callback) {
   // Query filter to be passed to chrome.tabs.query - see
   // https://developer.chrome.com/extensions/tabs#method-query
@@ -53,7 +47,10 @@ function getCurrentTabUrl(callback) {
   // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
-
+function showBitcoin() {
+	document.getElementById('accepting-none').style.display = 'none';
+	document.getElementById('show-bitcoin').style.display = 'block';
+}
 
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
@@ -75,6 +72,7 @@ function getBitStatus(page) {
 		if(response[i].txt.substring(0, 4) == "BTC:") {
 			accepts = true;
 			new QRCode(document.getElementById("qrcode"), response[i].txt.split("BTC:")[1]);
+			showBitcoin();
 		}
 	}
 	
@@ -93,8 +91,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Put the image URL in Google search.
    // renderStatus('This website accepts donations.');
 
-	//getBitStatus("severn.me");
-	
-	
+	//getBitStatus("severn.me");	
   });
 });
+
+chrome.tabs.getSelected(null, function(tab) {
+	getBitStatus(new URL(tab.url).hostname);
+});
+
+
+document.getElementById('bitcoin').addEventListener('click', function() {
+    document.getElementById('qrcode').style.display = "block";
+}, false);
+
