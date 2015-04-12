@@ -82,7 +82,7 @@ function getPayPalStatus(page) {
   
 	var response = x.response;
 	for(var i=0; i<response.length; i++) {
-		if(response[i].txt.substring(0, 4) == "PAYPAL:") {
+		if(response[i].txt.substring(0, 6) == "PAYPAL:") {
 			accepts = true;
 			showPayPal(response[i].txt.split("PAYPAL:")[1]);
 		}
@@ -109,6 +109,7 @@ function getPayPalStatus(page) {
 
 chrome.tabs.getSelected(null, function(tab) {
 	getBitStatus(new URL(tab.url).hostname);
+	getPayPalStatus(new URL(tab.url).hostname);
 	
 	$("#paypal-link").click(function() {
 		chrome.tabs.create({url: $(this).attr('href')});
